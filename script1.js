@@ -73,7 +73,7 @@ function techNews(){
 
 	const category = 'technology';
 
-	var url = 'http://newsapi.org/v2/top-headlines?' +
+	var url = 'https://newsapi.org/v2/top-headlines?' +
           'language=en&' + 'category=' + category +  
           '&apiKey=' + apiKey;	
 
