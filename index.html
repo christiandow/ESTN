@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+ 
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>ESTN | Entertainment Sports and Tech News</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <script src="key.js"></script>
+
+    <div>
+      <h1>ESTN</h1> 
+
+      <h3>Entertainment, Sports, and Technology News</h3>
+
+      <form class="search" action="">
+        <label>News within Category</label>
+        <input class="input" type="text"/>
+        <input type="submit"/></form>
+
+
+
+    </div>
+
+  </head>
+
+  <body>
+
+  	<header>
+  		<nav id="navBar">
+  			<ul>
+  				<li><button onclick="entNews()">Entertainment</button></li>
+  				<li><button onclick="sportNews()">Sports</button></li>
+  				<li><button onclick="techNews()">Technology</button></li>
+  			</ul>
+  		</nav>
+  	</header>
+
+
+
+
+    <div class="entArticles">
+      <label id= "entTitle" style="display:none"><h2>Entertainment Articles</h2></label>
+      <ul id="entArticleList"></ul>
+      <ul id="entImgs"></ul>
+      <ul id="entInfo"></ul>
+      <ul id="entDesc"></ul>
+    </div>
+
+    <div class="sportArticles">
+      <label id= "sportTitle" style="display:none"><h2>Sports Articles</h2></label>
+      <ul id="sportArticleList"></ul>
+      <ul id="sportImgs"></ul>
+      <ul id="sportInfo"></ul>
+      <ul id="sportDesc"></ul>
+    </div>
+
+    <div id="techArticles">
+      <label id= "techTitle" style="display:none"><h2>Tech Articles</h2></label>
+      <ul id="techArticleList"></ul>
+      <ul id="techImgs"></ul>
+      <ul id="techInfo"></ul>
+      <ul id="techDesc"></ul>
+    </div>
+
+
+    <script src="script1.js"></script> 
+
+  </body>
+  <footer>
+    <p>ESTN | Entertainment, Sports, and Tech News</p>
+  </footer>
+</html>
