@@ -73,7 +73,7 @@ function techNews(){
 
 	const category = 'technology';
 
-	var url = 'https://cors-anywhere.herokuapp.com/http://newsapi.org/v2/top-headlines?' +
+	var url = 'http://newsapi.org/v2/top-headlines?' +
           'language=en&' + 'category=' + category +  
           '&apiKey=' + apiKey;	
 
