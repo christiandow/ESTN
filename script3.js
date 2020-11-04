@@ -78,7 +78,7 @@ function find(e){
 
 	//Creates the search results for under the technology category
 
-	var url = 'http://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' +  'category=' + 'technology' + '&' +
+	var url = 'https://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' +  'category=' + 'technology' + '&' +
           'q=' + searchInput + '&' +
           'apiKey=' + apiKey;
 
@@ -108,7 +108,7 @@ function find(e){
 
 
 		for (let i = 1; i <= techPages && i < 100; i++) {
-	  		var url = 'http://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' + 
+	  		var url = 'https://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' + 
 	          'q=' + searchInput + '&' + 'pageSize=100' + '&' + 'page=' + i + '&' + 
 	          'category=technology' + '&' +'apiKey=' + apiKey;
 
@@ -157,7 +157,7 @@ function find(e){
 
 	//Creates the search results for under the sports category
 
-	var url = 'http://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' + 'category=sports' + '&' +
+	var url = 'https://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' + 'category=sports' + '&' +
           'q=' + searchInput + '&' +
           'apiKey=' + apiKey;
 
@@ -187,7 +187,7 @@ function find(e){
 
 
 		for (let i = 1; i <= sportPages && i < 100; i++) {
-	  		var url = 'http://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' +
+	  		var url = 'https://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' +
 	          'q=' + searchInput + '&' + 'pageSize=100' + '&' + 'page=' + i + '&' + 
 	          'category=sports' + '&' +'apiKey=' + apiKey;
 
@@ -236,7 +236,7 @@ function find(e){
 
 	//Creates the search results for under the entertainment category
 
-	var url = 'http://newsapi.org/v2/top-headlines?' +'country=' + country + '&' + 'category=entertainment' +
+	var url = 'https://newsapi.org/v2/top-headlines?' +'country=' + country + '&' + 'category=entertainment' +
 		 '&' + 'q=' + searchInput + '&' + 'apiKey=' + apiKey;
 
     console.log(url); //prints the url created for debugging purposes
@@ -265,7 +265,7 @@ function find(e){
 
 
 		for (let i = 1; i <= entPages && i < 100; i++) {
-	  		var url = 'http://newsapi.org/v2/top-headlines?' +
+	  		var url = 'https://newsapi.org/v2/top-headlines?' +
 	          'q=' + searchInput + '&' +'country=' + country + '&' + 'pageSize=100' + '&' + 'page=' + i + '&' + 
 	          'category=entertainment' + '&' + 'apiKey=' + apiKey;
 
@@ -329,7 +329,7 @@ function techNews(){
 
 	country = document.getElementById('country').value;
 
-	var url = 'http://newsapi.org/v2/top-headlines?' +
+	var url = 'https://newsapi.org/v2/top-headlines?' +
           'country=' + country + '&' + 'category=technology' +  
           '&apiKey=' + apiKey;	
 
@@ -393,7 +393,7 @@ function sportNews(){
 
 	country = document.getElementById('country').value;
 
-	var url = 'http://newsapi.org/v2/top-headlines?' +
+	var url = 'https://newsapi.org/v2/top-headlines?' +
           'country=' + country + '&' + 'category=sports' +  
           '&apiKey=' + apiKey;	
 
@@ -454,7 +454,7 @@ function entNews(){
 
 	country = document.getElementById('country').value;
 
-	var url = 'http://newsapi.org/v2/top-headlines?' +
+	var url = 'https://newsapi.org/v2/top-headlines?' +
           'country=' + country + '&' + 'category=entertainment' +  
           '&apiKey=' + apiKey;	
 
