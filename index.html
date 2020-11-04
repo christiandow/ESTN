@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>ESTN | Entertainment, Sports, and Tech News</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <script src="key.js"></script>
+
+   
+
+  </head>
+
+  <body>
+
+    <div id="navBar" class="navBar">
+      <button id="logo" onclick="reloadPage()"><h1 id="estnLogo" class="estnLogo">ESTN</h1> </button>
+      <!-- <h3>Entertainment, Sports, and Technology News</h3>-->
+
+      <form class="search" action="">
+        <!---<label>Search for News in Entertainment, Sports and Technology</br></label> --->
+        <input class="input" type="text"/>
+        <input type="submit"/>
+      </form>
+
+      <!--<h4 class="countryTitle">Select Country</h4>-->
+      <select id="country">
+        <option value="" selected="selected">All Countries</option>
+        <option value="ae">United Arab Emirates</option>
+        <option value="ar">Argentina</option>
+        <option value="at">Austria</option>
+        <option value="au">Australia</option>
+        <option value="be">Belgium</option>
+        <option value="bg">Bulgaria</option>
+        <option value="br">Brazil</option>
+        <option value="ca">Canada</option>
+        <option value="ch">Switzerland</option>
+        <option value="cn">China</option>
+        <option value="co">Colombia</option>
+        <option value="cu">Cuba</option>
+        <option value="cz">Czechia</option>
+        <option value="de">Germany</option>
+        <option value="eg">Egypt</option>
+        <option value="fr">France</option>
+        <option value="gb">Great Britain</option>
+        <option value="gr">Greece</option>
+        <option value="hk">Hong Kong</option>
+        <option value="hu">Hungary</option>
+        <option value="id">Indonesia</option>
+        <option value="ie">Ireland</option>
+        <option value="il">Israel</option>
+        <option value="in">India</option>
+        <option value="it">Italy</option>
+        <option value="jp">Japan</option>
+        <option value="kr">South Korea</option>
+        <option value="lt">Lithuania</option>
+        <option value="lv">Latvia</option>
+        <option value="ma">Morocco</option>
+        <option value="mx">Mexico</option>
+        <option value="my">Malaysia</option>
+        <option value="ng">Nigeria</option>
+        <option value="nl">Netherlands</option>
+        <option value="no">Norway</option>
+        <option value="nz">New Zealand</option>
+        <option value="ph">Philippines</option>
+        <option value="pl">Poland</option>
+        <option value="pt">Portugal</option>
+        <option value="ro">Romania</option>
+        <option value="rs">Serbia</option>
+        <option value="ru">Russia</option>
+        <option value="sa">Saudi Arabia</option>
+        <option value="se">Sweden</option>
+        <option value="sg">Singapore</option>
+        <option value="si">Slovenia</option>
+        <option value="sk">Slovakia</option>
+        <option value="th">Thailand</option>
+        <option value="tr">Turkey</option>
+        <option value="tw">Taiwan</option>
+        <option value="ua">Ukraine</option>
+        <option value="us">United States of America</option>
+        <option value="ve">Venezuela</option>
+        <option value="za">South Africa</option>
+      </select>
+    <button id="ent" onclick="entNews()">Entertainment</button>
+    <button id="sport" onclick="sportNews()">Sports</button>
+    <button id="tech" onclick="techNews()">Technology</button>
+    </div>
+
+    <div id="startScreen" style="display:block">
+      <h2>CLICK A CATEGORY TO SEE THE TOP 20 ARTICLES BY COUNTRY</br>OR SEARCH FOR SPECIFIC ARTICLES BY COUNTRY</h2>
+    </div>
+
+
+    <div class="searchResults">
+      <label id= "searchTitle" style="display:none; text-align: center; padding-top: 5%"><h2>Results</h2></label>
+  		<h2  id="noResults" style="display:none; text-align: center; padding-top: 5%; color: red">NO RESULTS. TRY A DIFFERENT SEARCH.</h2>
+      <ul id="searchArticleList" class="articles"></ul>
+    </div>
+
+    <div class="entArticles">
+      <label id= "entTitle" style="display:none; text-align: center; padding-top: 5%"><h2>Top 20 Entertainment Articles</h2></label>
+      <ol id="entArticleList" class="articles"></ol>
+    </div>
+
+    <div class="sportArticles">
+      <label id= "sportTitle" style="display:none; text-align: center; padding-top: 5%"><h2>Top 20 Sports Articles</h2></label>
+      <ol id="sportArticleList" class="articles"></ol>
+    </div>
+
+    <div id="techArticles">
+      <label id= "techTitle" style="display:none; text-align: center; padding-top: 5%"><h2>Top 20 Tech Articles</h2></label>
+      <ol id="techArticleList" class="articles"></ol>
+    </div>
+
+
+    <script src="script3.js"></script> 
+
+  </body>
+  <footer>
+    <p>ESTN | Entertainment, Sports, and Tech News</p>
+  </footer>
+</html>
