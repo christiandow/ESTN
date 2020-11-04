@@ -1,0 +1,215 @@
+@font-face {
+  font-family: 'espn';
+  src: url('ESP.woff2') format('woff2'), /* Super Modern Browsers */
+       url('ESP.woff') format('woff'), /* Pretty Modern Browsers */
+       url('esp.ttf')  format('truetype'); /* Safari, Android, iOS */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1{
+	font-family: 'espn';
+}
+
+body{
+	background-color: monospace;
+	font-family: 'espn';
+}
+
+button {
+	font-family: 'espn';
+}
+
+.navBar{
+
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	grid-template-rows: 0px;
+	grid-gap: 0px;
+}
+
+.navBar > #logo > h1 {
+	font-family: espn;
+}
+
+.navBar > #logo {
+	background-color: red;
+	color: white;
+	grid-area: logo;
+	padding-left: 5px;
+	grid-column: 1/2;
+}
+
+.navBar > form {
+	background-color: black;
+	color: white;
+	grid-area: search;
+	grid-column: 6/8;
+}
+
+.navBar > #ent {
+	background-color: black;
+	color: white;
+	grid-area: ent;
+	grid-column: 2/3;
+}
+
+.navBar > #sport {
+	background-color: black;
+	color: white;
+	grid-area: sport;
+	grid-column: 3/4;
+}
+
+.navBar > #tech {
+	background-color: black;
+	color: white;
+	grid-area: tech;
+	grid-column: 4/5;
+}
+
+.navBar > #country {
+	background-color: black;
+	color: white;
+	grid-area: country;
+	grid-column: 5/6;
+}
+
+#startScreen{
+	padding-top:20%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.articles > li {
+	font-family: monospace;
+	border: ridge lightgrey;
+	border-radius: 15px;
+	margin-top: 10px;
+	margin-left: 20%;
+	margin-right: 20%;
+	display: grid;
+	grid-template-columns: 300px 1fr 1fr;
+	grid-auto-rows: min(5px, auto);
+	grid-template-areas: 
+		"header header header"
+		"sidebar author author"
+		"sidebar desc desc";
+	grid-column-gap: 5px;
+	background-color: white;
+	
+
+}
+
+li > h2 {
+	grid-area: header;
+	float:left;
+	vertical-align: top;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+li > img {
+	grid-area: sidebar;
+	float:left;
+	margin-left: 5%;
+	margin-bottom: 5%;
+}
+
+li > h5 {
+	grid-area: author;
+	float:left;
+	vertical-align: top;
+	margin-left: 7%;
+}
+
+li > p {
+	grid-area: desc;
+	float:left;
+	vertical-align: top;
+	margin-left: 7%;
+}
+
+img{
+	max-width: 300px;
+	height: auto;
+	border-radius: 15px;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+
+
+/*.articles > li{
+	display:grid;
+	grid-template-columns: repeat(3, 33%);
+	grid-template-rows: repeat(3, 20%);
+
+
+}
+.articles > li > img{
+	grid-column: 1/2;
+
+	grid-row: 1/-1;
+
+.articles > li > a{
+	grid-column-start: 2;
+	grid-column-end: 3;
+
+	grid-row-start: 1;
+	grid-row-end: 2; 
+}
+
+img{
+	width:33%;
+	hieght:auto;
+}*/
+
+/*#searchArticleList a{
+	display:grid;
+	grid-template-columns: repeat(3, 1fr);
+
+	width: max(1fr);
+	height: auto;
+	grid-column: 2/3;
+}
+
+
+/*.entArticles{
+	display:grid;
+	grid-template-columns: repeat(3, 1fr);
+
+}
+
+.techArticles{
+	display:grid;
+	grid-template-columns: repeat(3, 1fr);
+
+}
+
+.articles{
+	display:grid;
+
+}
+
+.imgs{
+
+}*/
