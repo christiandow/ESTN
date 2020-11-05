@@ -17,7 +17,7 @@ let currentCategory = "";
 
 function clearScreen(){
 
-	//clears the body of the html to make a black canvas
+	//clears the body of the html to make a blank canvas
 
 	techArticleList.innerHTML = '';
 	searchArticleList.innerHTML = '';
