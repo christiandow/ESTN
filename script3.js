@@ -8,45 +8,51 @@ const search = document.querySelector('.search')
 const input = document.querySelector('.input');
 const articleList = document.querySelector('.articleList');
 
+//Lists the specific country to look for articles from
 let country = document.getElementById('country').value;
-console.log(country);
 
 let currentCategory = "";
 
-let searchNoti = 0;
+
 
 function clearScreen(){
+
+	//clears the body of the html to make a black canvas
 
 	techArticleList.innerHTML = '';
 	searchArticleList.innerHTML = '';
 	entArticleList.innerHTML = '';
 	sportArticleList.innerHTML = '';
 
-	document.getElementById("searchTitle").style.display = "none"; //turns off Search articles header
-	document.getElementById("sportTitle").style.display = "none"; //turns off Sports articles header
-	document.getElementById("entTitle").style.display = "none"; //turns off Entertainment articles header
-	document.getElementById("techTitle").style.display = "none"; //turns off Tech article header
+	document.getElementById("searchTitle").style.display = "none"; 
+	document.getElementById("sportTitle").style.display = "none"; 
+	document.getElementById("entTitle").style.display = "none"; 
+	document.getElementById("techTitle").style.display = "none"; 
 	document.getElementById("noResults").style.display = "none"; 
 	document.getElementById("startScreen").style.display = "none";
 
 }
 
 
+
 function pagesNumber(a){
 
-	if(a <= 100 && a > 0){
+	//determines the amount of pages needed to search all articles
+
+	if(a <= 100 && a > 0){ //max page size so any result total smaller than 100 only needs to query 1 page
 		a = 1;
 		return a;
 	}
 
-	if(a > 100){
+	if(a > 100){ 
 		a = a/100;
 		a = Math.round(a);
-		a = a + 1;
+		a = a + 1; //add 1 to the number of pages to account for error
 		return a;
 	}
 
 }
+
 
 
 //creates an event for hitting the search button
@@ -58,6 +64,7 @@ function find(e){
 	clearScreen();
 	document.getElementById("searchTitle").style.display = "block"; //display Search articles header
 
+
 	let results = null;
 
 	let techPages = null;
@@ -68,30 +75,33 @@ function find(e){
 	let sportTot = null;
 	let entTot = null;
 
+
 	e.preventDefault(); //stops refreshing after pressing search that caused code to not work
 
-	
 
 	country = document.getElementById('country').value;
 
 	let searchInput = input.value;
 
+	
 	//Creates the search results for under the technology category
 
-	var url = 'https://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' +  'category=' + 'technology' + '&' +
+	var url = 'http://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' +  'category=' + 'technology' + '&' +
           'q=' + searchInput + '&' +
           'apiKey=' + apiKey;
 
-    console.log(url); //prints the url created for debugging purposes
+    //console.log(url); //prints the url created for debugging purposes
 
 	var req = new Request(url);
 
+
+	//initial query of search to determine the amount of results needed to be handled
 	fetch(url).then((response)=>{
 		return response.json()
 	}).then((data)=>{
-		console.log(data) //prints the JSON returned for debugging purposes
+		//console.log(data) //prints the JSON returned for debugging purposes
 		results = data.totalResults;
-		console.log(results);
+		//console.log(results);
 
 		if (data.totalResults == 0){
 			techPages = 0;
@@ -101,14 +111,14 @@ function find(e){
 			techPages = pagesNumber(results);
 		}
 
-		let techTot = techPages;
+		let techTot = techPages; //the total number of techPages -- code interprets this
+		 						 //and previous variable a diffferent way for unkown reason
 
-		//techPages = pagesNumber(results);
-		console.log(techPages); //prints the number of results pages resquired for search for debugging purposes
+		//console.log(techPages); //prints the number of results pages resquired for search for debugging purposes
 
 
-		for (let i = 1; i <= techPages && i < 100; i++) {
-	  		var url = 'https://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' + 
+		for (let i = 1; i <= techPages && i < 100; i++) { //quesries all the articles and creates an html list item for each articlem
+	  		var url = 'http://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' + 
 	          'q=' + searchInput + '&' + 'pageSize=100' + '&' + 'page=' + i + '&' + 
 	          'category=technology' + '&' +'apiKey=' + apiKey;
 
@@ -117,7 +127,7 @@ function find(e){
 			fetch(url).then((response)=>{
 				return response.json()
 			}).then((data)=>{
-				console.log(data) //prints the JSON returned for debugging purposes
+				//console.log(data) //prints the JSON returned for debugging purposes
 				data.articles.forEach(article =>{
 		        	let li = document.createElement('li');
 		        	let img = document.createElement('img');
@@ -125,7 +135,6 @@ function find(e){
 				   	let a = document.createElement('a');
 			      	let h5 = document.createElement('h5');
 			      	let p2 = document.createElement('p');
-			      	//let hr = document.createElement('hr');
 
 			       	a.setAttribute('href', article.url);
 				   	a.setAttribute('target', '_blank');
@@ -157,20 +166,22 @@ function find(e){
 
 	//Creates the search results for under the sports category
 
-	var url = 'https://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' + 'category=sports' + '&' +
+	var url = 'http://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' + 'category=sports' + '&' +
           'q=' + searchInput + '&' +
           'apiKey=' + apiKey;
 
-    console.log(url); //prints the url created for debugging purposes
+    //console.log(url); //prints the url created for debugging purposes
 
 	var req = new Request(url);
 
-	fetch(url).then((response)=>{
+
+	//initial query of search to determine the amount of results needed to be handled
+	fetch(url).then((response)=>{ 
 		return response.json()
 	}).then((data)=>{
-		console.log(data) //prints the JSON returned for debugging purposes
+		//console.log(data) //prints the JSON returned for debugging purposes
 		results = data.totalResults;
-		console.log(results);
+		//console.log(results);
 
 		if (data.totalResults == 0){
 			sportPages = 0;
@@ -182,12 +193,11 @@ function find(e){
 
 		let sportTot = sportPages;
 
-		//sportPages = pagesNumber(results);
-		console.log(sportPages); //prints the number of results pages resquired for search for debugging purposes
+		//console.log(sportPages); //prints the number of results pages resquired for search for debugging purposes
 
 
-		for (let i = 1; i <= sportPages && i < 100; i++) {
-	  		var url = 'https://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' +
+		for (let i = 1; i <= sportPages && i < 100; i++) {//quesries all the articles and creates an html list item for each articlem
+	  		var url = 'http://newsapi.org/v2/top-headlines?' + 'country=' + country + '&' +
 	          'q=' + searchInput + '&' + 'pageSize=100' + '&' + 'page=' + i + '&' + 
 	          'category=sports' + '&' +'apiKey=' + apiKey;
 
@@ -236,19 +246,21 @@ function find(e){
 
 	//Creates the search results for under the entertainment category
 
-	var url = 'https://newsapi.org/v2/top-headlines?' +'country=' + country + '&' + 'category=entertainment' +
+	var url = 'http://newsapi.org/v2/top-headlines?' +'country=' + country + '&' + 'category=entertainment' +
 		 '&' + 'q=' + searchInput + '&' + 'apiKey=' + apiKey;
 
-    console.log(url); //prints the url created for debugging purposes
+    //console.log(url); //prints the url created for debugging purposes
 
 	var req = new Request(url);
 
+
+	//initial query of search to determine the amount of results needed to be handled
 	fetch(url).then((response)=>{
 		return response.json()
 	}).then((data)=>{
-		console.log(data) //prints the JSON returned for debugging purposes
+		//console.log(data) //prints the JSON returned for debugging purposes
 		results = data.totalResults;
-		console.log(results);
+		//console.log(results);
 
 		if (results == 0){
 			entPages = 0;
@@ -260,12 +272,11 @@ function find(e){
 
 		let entTot = entPages;
 
-		//entPages = pagesNumber(results);
-		console.log(entPages); //prints the number of results pages resquired for search for debugging purposes
+		//console.log(entPages); //prints the number of results pages resquired for search for debugging purposes
 
 
-		for (let i = 1; i <= entPages && i < 100; i++) {
-	  		var url = 'https://newsapi.org/v2/top-headlines?' +
+		for (let i = 1; i <= entPages && i < 100; i++) { //quesries all the articles and creates an html list item for each articlem
+	  		var url = 'http://newsapi.org/v2/top-headlines?' +
 	          'q=' + searchInput + '&' +'country=' + country + '&' + 'pageSize=100' + '&' + 'page=' + i + '&' + 
 	          'category=entertainment' + '&' + 'apiKey=' + apiKey;
 
@@ -312,7 +323,7 @@ function find(e){
 	})
 
 	let total = techTot +  sportTot + entTot;
-	console.log(total);
+	//console.log(total);
 
 	if(total == 0){
     	document.getElementById("noResults").style.display = "block";
@@ -329,7 +340,7 @@ function techNews(){
 
 	country = document.getElementById('country').value;
 
-	var url = 'https://newsapi.org/v2/top-headlines?' +
+	var url = 'http://newsapi.org/v2/top-headlines?' +
           'country=' + country + '&' + 'category=technology' +  
           '&apiKey=' + apiKey;	
 
@@ -344,11 +355,10 @@ function techNews(){
 	fetch(url).then((response)=>{ //gets the information from the NewsAPI url
 		return response.json()
 	}).then((data)=>{
-		console.log(data); //prints the JSON returned for debugging purposes
+		//console.log(data); //prints the JSON returned for debugging purposes
 
 		techArticles = data.articles; 
-
-		console.log(techArticles); //prints the articles array for debugging purposes
+		//console.log(techArticles); //prints the articles array for debugging purposes
 
 		data.articles.forEach(article =>{ //creates a list of article titles and makes them clickable links
            	let li = document.createElement('li');
@@ -357,7 +367,6 @@ function techNews(){
 		   	let a = document.createElement('a');
 	      	let h5 = document.createElement('h5');
 	      	let p2 = document.createElement('p');
-	      	//let hr = document.createElement('hr');
 
 	       	a.setAttribute('href', article.url);
 		   	a.setAttribute('target', '_blank');
@@ -376,7 +385,6 @@ function techNews(){
 	       	li.appendChild(h2);
 	       	li.appendChild(h5);
 		   	li.appendChild(p2);
-		   	//li.appendChild(hr);
 		    techArticleList.appendChild(li);
     	})
 
@@ -384,6 +392,8 @@ function techNews(){
 
 
 }
+
+
 
 function sportNews(){
 
@@ -393,11 +403,11 @@ function sportNews(){
 
 	country = document.getElementById('country').value;
 
-	var url = 'https://newsapi.org/v2/top-headlines?' +
+	var url = 'http://newsapi.org/v2/top-headlines?' +
           'country=' + country + '&' + 'category=sports' +  
           '&apiKey=' + apiKey;	
 
-    console.log(url); //prints the url created for debugging purposes
+    //console.log(url); //prints the url created for debugging purposes
 
 	var req = new Request(url);
 
@@ -407,11 +417,11 @@ function sportNews(){
 	fetch(url).then((response)=>{ //gets the information from the NewsAPI url
 		return response.json()
 	}).then((data)=>{
-		console.log(data); //prints the JSON returned for debugging purposes
+		//console.log(data); //prints the JSON returned for debugging purposes
 
 		techArticles = data.articles; 
 
-		console.log(techArticles); //prints the articles array for debugging purposes
+		//console.log(techArticles); //prints the articles array for debugging purposes
 
 		data.articles.forEach(article =>{ //creates a list of article titles and makes them clickable links
            	let li = document.createElement('li');
@@ -446,6 +456,8 @@ function sportNews(){
 
 }
 
+
+
 function entNews(){
 
 	// clear the webpage before loading tech article list	
@@ -454,7 +466,7 @@ function entNews(){
 
 	country = document.getElementById('country').value;
 
-	var url = 'https://newsapi.org/v2/top-headlines?' +
+	var url = 'http://newsapi.org/v2/top-headlines?' +
           'country=' + country + '&' + 'category=entertainment' +  
           '&apiKey=' + apiKey;	
 
@@ -506,6 +518,8 @@ function entNews(){
 
 
 }
+
+
 
 function reloadPage(){
 	location.reload();
